@@ -2,6 +2,9 @@
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'action_director/version'
+require "action_director/directable"
+require "action_director/directive"
+require "action_director/directing"
 
 Gem::Specification.new do |spec|
   spec.name          = "action_director"
@@ -9,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Ritchie Paul Buitre"]
   spec.email         = ["ritchie@richorelse.com"]
   spec.description   = %q{Directs objects' behaviors}
-  spec.summary       = %q{You can think of it as either a router for your objects, a BDD DSL or as a prototyping tool, etc.}
+  spec.summary       = %q{You can think of it as either a router for your objects, or as a rapid prototyping toolset.}
   spec.homepage      = ""
   spec.license       = "MIT"
 
@@ -21,6 +24,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
   spec.add_development_dependency "minitest", "~> 4.7.5"
-
-  spec.add_dependency 'delegate'
+  spec.add_development_dependency "minitest-reporters"
+  spec.add_development_dependency "pry"
 end

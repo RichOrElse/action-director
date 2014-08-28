@@ -1,6 +1,6 @@
 # ActionDirector
 
-TODO: Write a gem description
+Directs objects' behaviors
 
 ## Installation
 

@@ -1,5 +1,7 @@
-require "action_director/version"
 
 module ActionDirector
-  # Your code goes here...
+  def self.included(receiver)
+    receiver.extend         Directing
+    receiver.send :include, Directing
+  end
 end
