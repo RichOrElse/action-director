@@ -39,7 +39,7 @@ Range Conditions:
 Regexp Conditions:
 
     class JsonResponseDirector < Struct.new(:view_context)
-      include Directives::Director
+      include ActionDirector
 
       def responding
         @responding ||= direct view_context do
