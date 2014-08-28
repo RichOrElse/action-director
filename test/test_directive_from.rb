@@ -12,7 +12,7 @@ class TestDirectiveFrom < MiniTest::Unit::TestCase
   end
 
   def test_from_regular_age
-    assert_equal @labeling_age.from(16), "1 - 17"
+    assert_equal @labeling_age.from(33), "28 - 37"
   end
 
   def test_from_above_regular_age
