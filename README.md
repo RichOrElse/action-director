@@ -16,7 +16,9 @@ Or install it yourself as:
 
     $ gem install action_director
 
-## Usage
+## Sample Usage
+
+Range Conditions:
 
     class AgeLabeler
       include ActionDirector
@@ -31,6 +33,25 @@ Or install it yourself as:
     
       def label(age)
         @labeling.from age
+      end
+    end
+
+Regexp Conditions:
+
+    class JsonResponseDirector < Struct.new(:view_context)
+      include Directives::Director
+
+      def responding
+        @responding ||= direct view_context do
+          with /^succeeded_creating/ do |resource| render action: 'show', status: :created, location: resource end
+          with /^failed/             do |resource| render json: resource.errors, status: :unprocessable_entity end
+          otherwise                  do |resource| head :no_content                                            end
+        end
+      end
+
+      def method_missing(method_name, *args, &block)
+        resource = args.first
+        responding.for resource, method_name
       end
     end
 
