@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["ritchie@richorelse.com"]
   spec.description   = %q{Directs objects' behaviors}
   spec.summary       = %q{You can think of it as either a router for your objects, or as a rapid prototyping toolset.}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/RichOrElse/action-director"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
