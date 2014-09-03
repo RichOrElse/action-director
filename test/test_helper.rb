@@ -1,5 +1,6 @@
 require 'bundler/setup'
 require 'action_director'
+require 'minitest'
 require 'minitest/unit'
 require 'minitest/autorun'
 require 'minitest/pride'
