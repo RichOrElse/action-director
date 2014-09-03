@@ -18,7 +18,7 @@ Or install it yourself as:
 
 ## Sample Usage
 
-Range Conditions:
+from(subject)
 
     class AgeLabeler
       include ActionDirector
@@ -36,14 +36,14 @@ Range Conditions:
       end
     end
 
-Regexp Conditions:
+for(subject, condition)
 
     class JsonResponseDirector < Struct.new(:view_context)
       include ActionDirector
 
       def responding
         @responding ||= direct view_context do
-          with /^succeeded_creating/ do |resource| render action: 'show', status: :created, location: resource end
+          with /^succeeded_creating/ do |resource| render json: resource, status: :created, location: resource end
           with /^failed/             do |resource| render json: resource.errors, status: :unprocessable_entity end
           otherwise                  do |resource| head :no_content                                            end
         end
