@@ -18,7 +18,7 @@ Or install it yourself as:
 
 ## Sample Usage
 
-# from(subject)
+### from(subject)
 
     class AgeLabeler
       include ActionDirector
@@ -36,7 +36,7 @@ Or install it yourself as:
       end
     end
 
-# for(subject, condition)
+### for(subject, condition)
 
     class JsonResponseDirector < Struct.new(:controller)
       include ActionDirector
