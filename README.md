@@ -18,7 +18,7 @@ Or install it yourself as:
 
 ## Sample Usage
 
-from(subject)
+# from(subject)
 
     class AgeLabeler
       include ActionDirector
@@ -36,22 +36,22 @@ from(subject)
       end
     end
 
-for(subject, condition)
+# for(subject, condition)
 
-    class JsonResponseDirector < Struct.new(:view_context)
+    class JsonResponseDirector < Struct.new(:controller)
       include ActionDirector
 
-      def responding
-        @responding ||= direct view_context do
-          with /^succeeded_creating/ do |resource| render json: resource, status: :created, location: resource end
-          with /^failed/             do |resource| render json: resource.errors, status: :unprocessable_entity end
-          otherwise                  do |resource| head :no_content                                            end
+      def response
+        direct controller do
+          with /fail/    do |resource| render json: resource.errors, status: :unprocessable_entity end
+          with /created/ do |resource| render json: resource, status: :created, location: resource end
+          otherwise      do |resource| head :no_content                                            end
         end
       end
 
       def method_missing(method_name, *args, &block)
         resource = args.first
-        responding.for resource, method_name
+        response.for resource, method_name
       end
     end
 
