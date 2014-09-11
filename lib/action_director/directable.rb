@@ -18,9 +18,9 @@ module ActionDirector
     end
 
     def as key, *args                      # of the eight(8) calling methods, is the most straight forward (direct) way of calling a stored action block
-      stored = actions[key]                # use one (1) calling method for different directables instead of many on the same directable (Directive)
+      stored = actions[key]
       if stored
-        stored.call *args                  # here only the succeeding arguments (args) are passed (excluding key)
+        stored.call *args
       else
         raise ArgumentError, "#{key.inspect}:#{key.class} did not match any condition"
       end
@@ -31,27 +31,27 @@ module ActionDirector
     end
 
     def of key, subject                    # passes the subject with the key
-      as key, subject, key                 # accepts only two (2) arguments
+      as key, subject, key                 
     end
 
     def from source                        # matches (keys) and passes the subject (with matching key)
-      of key_like(source), source          # accepts only one (1) argument (source), passes two (2) to the block
+      of key_like(source), source
     end
 
     def to destination, *args              # matches (keys) and passes the subject (without a key) plus (optional) arguments
       alike destination, destination, *args
     end
 
-    def for subject, condition             # evaluates second argument (condition) instead of the first (subject), ideal for hash conditions
-      alike condition, subject, condition  # accepts only two (2) arguments and passes both
+    def for subject, condition             # evaluates second argument (condition) instead of the first (subject)
+      alike condition, subject, condition
     end
 
-    def like so, &block                    # matches and passes the subject (so)
-      alike so, so, block                  # accepts only one (1) argument (so)
+    def like so, &block                    # matches and passes the subject (so), accepts only one (1) argument (so)
+      alike so, so, block                  
     end
 
-    def alike so, *args                    # derives a key from the subject (so), only passes succeeding arguments (args)
-      as key_like(so), *args               # similar to as() method, passing no key they are alike :P
+    def alike so, *args                    # derives a key from the subject (so), only passes succeeding arguments (args), similar to as() method, passing no key they are alike :P
+      as key_like(so), *args               
     end
 
     def conditions                         # list block keys
