@@ -44,7 +44,7 @@ Or install it yourself as:
       def response
         direct controller do
           with /fail/    do |resource| render json: resource.errors, status: :unprocessable_entity end
-          with /created/ do |resource| render json: resource, status: :created, location: resource end
+          with /created/ do |resource| render action: 'show', status: :created, location: resource end
           otherwise      do |resource| head :no_content                                            end
         end
       end
