@@ -30,6 +30,9 @@ module ActionDirector
     def recognize? condition
       key_like(condition) != nil
     end
+
+    def [](condition)
+      @actions[key_like condition]
+    end
   end
 end
-
